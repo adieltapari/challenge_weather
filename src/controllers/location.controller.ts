@@ -10,17 +10,16 @@ export const location = async (req: Request, res: Response) => {
     const resp = await intance.get();
     const { city, country, latitude, longitude } = resp.data;
 
-    console.log(resp.data);
     return res.status(200).json({
       city,
       country,
       latitude,
       longitude,
     });
-  } catch (error) {
+  } catch (e) {
     return res.status(500).json({
       status: 500,
-      message: 'Error occurred in create affiliate',
+      message: 'Error location City',
     });
   }
 };
