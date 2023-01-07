@@ -9,7 +9,7 @@ export interface ILocation extends Document {
 }
 
 const locationSchema = new Schema({
-  city: { type: String, required: true },
+  city: { type: String, required: true, lowercase: true },
   lat: { type: Number, required: true },
   lon: { type: Number, required: true },
   updateDate: { type: Date, default: Date.now },

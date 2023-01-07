@@ -1,5 +1,6 @@
 import express from 'express';
-// morgan sirve para ver las peticiones a la api cuando esta corriendo el servidor en la consola
+
+// morgan is used to see the requests to the api when the server is running in the console
 import morgan from 'morgan';
 import routes from './routes';
 import dotenv from 'dotenv';

@@ -2,13 +2,17 @@ import { Request, Response } from 'express';
 const axios = require('axios');
 import Location, { ILocation } from '../models/location';
 
+//=====================================
+//            LOCATION IPAPI = GET
+//=====================================
+
 export const location = async (req: Request, res: Response) => {
   try {
-    // Petición http
-    const intance = axios.create({
+    // Instance view location -GET
+    const instance = axios.create({
       baseURL: `https://ipapi.co/json/`,
     });
-    const resp = await intance.get();
+    const resp = await instance.get();
     const { city, country, latitude, longitude } = resp.data;
 
     return res.status(200).json({
@@ -20,13 +24,18 @@ export const location = async (req: Request, res: Response) => {
   } catch (e) {
     return res.status(500).json({
       status: 500,
-      message: 'Error location City',
+      message: 'Error location city',
     });
   }
 };
 
+//=====================================
+//           CREATE LOCATION = POST
+//=====================================
+
 export const create = async (req: Request, res: Response) => {
   const { city } = req.body;
+
   try {
     const locationCity = await Location.findOne({ city });
     if (locationCity) {
@@ -44,6 +53,10 @@ export const create = async (req: Request, res: Response) => {
     });
   }
 };
+
+//=====================================
+//            LISTCITIES = GET
+//=====================================
 
 export const listCities = async (req: any, res: any) => {
   try {

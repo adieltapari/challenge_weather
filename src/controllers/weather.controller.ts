@@ -2,13 +2,17 @@ import { Request, Response } from 'express';
 const axios = require('axios');
 import Location from '../models/location';
 
+//=====================================
+//           CURRENT WATHER  = GET
+//=====================================
+
 export const current = async (req: Request, res: Response) => {
   const { city } = req.query;
 
   try {
-    const respcity = await Location.findOne({ city }).select({ city: 1, lat: 1, lon: 1 });
+    const respCity = await Location.findOne({ city }).select({ city: 1, lat: 1, lon: 1 });
 
-    if (!respcity) {
+    if (!respCity) {
       // Instance  Ipapi
       const instanceIpapi = axios.create({
         baseURL: `https://ipapi.co/json/`,
@@ -39,20 +43,22 @@ export const current = async (req: Request, res: Response) => {
         humedad: main.humidity,
       });
     }
-    //Current City
+
+    // Instance City Current
     const instanceCurrent = axios.create({
       baseURL: `https://api.openweathermap.org/data/2.5/weather`,
       params: {
         appid: process.env.OPENWEATHER_KEY,
         units: 'metric',
         lang: 'es',
-        lat: respcity?.lat,
-        lon: respcity?.lon,
+        lat: respCity?.lat,
+        lon: respCity?.lon,
       },
     });
 
     const respCurrent = await instanceCurrent.get();
     const { weather, main } = respCurrent.data;
+
     return res.status(200).json({
       Ciudad: city,
       temp: main.temp,
@@ -61,7 +67,8 @@ export const current = async (req: Request, res: Response) => {
       max: main.temp_max,
       humedad: main.humidity,
     });
-    return res.status(200).json(respcity);
+
+    return res.status(200).json(respCity);
   } catch (e) {
     return res.status(500).json({
       status: 500,
@@ -69,6 +76,10 @@ export const current = async (req: Request, res: Response) => {
     });
   }
 };
+
+//=====================================
+//           CURRENT FORECAST  = GET
+//=====================================
 
 export const forecast = async (req: Request, res: Response) => {
   const { city } = req.query;

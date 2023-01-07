@@ -4,7 +4,6 @@ import weatherRouter from './weather';
 
 const router = routerx();
 
-router.use('/api/v1', locationRouter);
-router.use('/api/v1', weatherRouter);
+router.use('/api/v1', locationRouter, weatherRouter);
 
 export default router;
