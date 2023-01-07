@@ -1,0 +1,36 @@
+{
+  "name": "challenge_weather",
+  "version": "1.0.0",
+  "description": "App challenge Weather",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x",
+    "npm": "8.x"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\" ",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Adiel Tapari",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.11.18",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.1",
+    "tsc-watch": "^6.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-promise-router": "^4.1.1",
+    "morgan": "^1.10.0"
+  }
+}
