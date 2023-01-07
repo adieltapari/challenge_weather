@@ -101,11 +101,11 @@ export const forecast = async (req: Request, res: Response) => {
 
       return res.status(200).json({
         Ciudad: city,
-        day1: list[0],
-        day2: list[1],
-        day3: list[2],
-        day4: list[3],
-        day5: list[4],
+        day1: [list[0].temp, 'humedad:', list[0].humidity, 'desc', list[0].weather[0].description],
+        day2: [list[1].temp, 'humedad:', list[1].humidity, 'desc', list[1].weather[0].description],
+        day3: [list[2].temp, 'humedad:', list[2].humidity, 'desc', list[2].weather[0].description],
+        day4: [list[3].temp, 'humedad:', list[3].humidity, 'desc', list[3].weather[0].description],
+        day5: [list[4].temp, 'humedad:', list[4].humidity, 'desc', list[4].weather[0].description],
       });
     }
     // Forecast City
@@ -125,11 +125,11 @@ export const forecast = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       Ciudad: city,
-      day1: list[0],
-      day2: list[1],
-      day3: list[2],
-      day4: list[3],
-      day5: list[4],
+      day1: [list[0].temp, 'humedad:', list[0].humidity, 'desc', list[0].weather[0].description],
+      day2: [list[1].temp, 'humedad:', list[1].humidity, 'desc', list[1].weather[0].description],
+      day3: [list[2].temp, 'humedad:', list[2].humidity, 'desc', list[2].weather[0].description],
+      day4: [list[3].temp, 'humedad:', list[3].humidity, 'desc', list[3].weather[0].description],
+      day5: [list[4].temp, 'humedad:', list[4].humidity, 'desc', list[4].weather[0].description],
     });
   } catch (e) {
     return res.status(500).json({
