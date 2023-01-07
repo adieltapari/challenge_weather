@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\" ",
     "start": "node index.js",
-    "mongodb": "docker-compose --env-file .env up"
+    "mongodb": " --env-file .env up"
   },
   "keywords": [],
   "author": "Adiel Tapari",
