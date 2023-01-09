@@ -1,9 +1,9 @@
-# **🌡 Resources 🌡 **
+# 🌡 Resources 🌡
 
 Api documentation:
 [Postman](https://documenter.getpostman.com/view/11619383/2s8Z75T9xH)
 
-# ** 🌠 API Challenge Weather 🌠**
+# 🌠 API Challenge Weather 🌠
 
 ## Technologies:
 
