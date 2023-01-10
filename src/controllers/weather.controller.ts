@@ -35,12 +35,12 @@ export const current = async (req: Request, res: Response) => {
       const respCurrent = await instanceCurrent.get();
       const { weather, main } = respCurrent.data;
       return res.status(200).json({
-        Ciudad: city,
+        city: city,
         temp: main.temp,
         desc: weather[0].description,
         min: main.temp_min,
         max: main.temp_max,
-        humedad: main.humidity,
+        humidity: main.humidity,
       });
     }
 
