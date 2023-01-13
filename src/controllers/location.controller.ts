@@ -16,16 +16,21 @@ export const location = async (req: Request, res: Response) => {
     const { city, country, latitude, longitude } = resp.data;
 
     return res.status(200).json({
-      city,
-      country,
-      latitude,
-      longitude,
+      location: {
+        city,
+        country,
+        latitude,
+        longitude,
+      },
     });
-  } catch (e) {
-    return res.status(500).json({
-      status: 500,
-      message: 'Error location city',
-    });
+  } catch (error) {
+    if (error) {
+      res.status(500).json({
+        status: 500,
+        message: 'Error location city',
+        error,
+      });
+    }
   }
 };
 
@@ -46,11 +51,14 @@ export const create = async (req: Request, res: Response) => {
     await location.save();
 
     res.status(200).json(location);
-  } catch (e) {
-    return res.status(500).json({
-      status: 500,
-      message: 'Error occurred in create location',
-    });
+  } catch (error) {
+    if (error) {
+      return res.status(500).json({
+        status: 500,
+        message: 'Error occurred in create location',
+        error,
+      });
+    }
   }
 };
 
